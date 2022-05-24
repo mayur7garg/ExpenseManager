@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  api:
+    build: ./api
+    image: expense-manager-api-img:latest
+    ports:
+      - "8000:5000"
+    volumes:
+      - .:/code
+    environment:
+      FLASK_ENV: development
+    container_name: expense-manager-api

@@ -1,6 +1,6 @@
 FROM python:3.9.13
 
-WORKDIR /code
+WORKDIR /code/api
 
 RUN apt-get update && apt-get install -y git
 RUN pip install --upgrade pip

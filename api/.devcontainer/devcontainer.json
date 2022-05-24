@@ -1,0 +1,16 @@
+{
+	"name": "Expense Manager API",
+	"dockerComposeFile": ["../../docker-compose.yml"],
+	"service": "api",
+	"settings": {
+		"python.defaultInterpreterPath": "/usr/local/bin/python",
+		"python.linting.enabled": true,
+		"python.linting.pylintEnabled": true
+	},
+	"extensions": [
+		"ms-python.python",
+		"ms-python.vscode-pylance",
+		"eamodio.gitlens"
+	],
+	"workspaceFolder": "/code/api"
+}
