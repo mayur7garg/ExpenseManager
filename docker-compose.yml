@@ -1,5 +1,22 @@
 version: "3.9"
 services:
+  db:
+    build: ./db
+    image: expense-manager-db-img:latest
+    ports:
+      - "15433:1433"
+    volumes:
+      - .:/code
+      - mssql_data:/var/opt/mssql/data
+      - mssql_log:/var/opt/mssql/log
+      - mssql_backup:/var/opt/mssql/backup
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=Pass@word
+      - MSSQL_DATA_DIR=/var/opt/mssql/data
+      - MSSQL_LOG_DIR=/var/opt/mssql/log
+      - MSSQL_BACKUP_DIR=/var/opt/mssql/backup
+    container_name: expense-manager-db
   api:
     build: ./api
     image: expense-manager-api-img:latest
@@ -8,5 +25,10 @@ services:
     volumes:
       - .:/code
     environment:
-      FLASK_ENV: development
+      - FLASK_ENV=development
     container_name: expense-manager-api
+
+volumes:
+  mssql_data:
+  mssql_log:
+  mssql_backup:
