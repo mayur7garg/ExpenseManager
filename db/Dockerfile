@@ -3,7 +3,9 @@ FROM mcr.microsoft.com/mssql/server:2019-CU16-ubuntu-20.04
 WORKDIR /code/db
 
 EXPOSE 1433
-COPY . .
+
+COPY Setup_DB.sh ./
+COPY DB_Init.sql ./
 
 USER root
 
@@ -14,4 +16,4 @@ RUN chmod +x ./Setup_DB.sh
 
 USER mssql
 
-CMD /bin/bash ./Entrypoint.sh
+CMD ["/bin/bash", "./Entrypoint.sh"]
